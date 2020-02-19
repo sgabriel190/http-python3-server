@@ -1,0 +1,13 @@
+<!ELEMENT persoane (persoana)>
+<!ELEMENT persoana (nume,prenume,varsta,adresa)>
+<!ELEMENT adresa (strada,numar,localitate,judet,tara)>
+<!ELEMENT persoana (#PCDATA)>
+<!ELEMENT nume (#PCDATA)>
+<!ELEMENT prenume (#PCDATA)>
+<!ELEMENT varsta (#PCDATA)>
+<!ELEMENT adresa (#PCDATA)>
+<!ELEMENT strada (#PCDATA)>
+<!ELEMENT numar (#PCDATA)>
+<!ELEMENT localitate (#PCDATA)>
+<!ELEMENT judet (#PCDATA)>
+<!ELEMENT tara (#PCDATA)>
