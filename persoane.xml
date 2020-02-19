@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persoane>
+    <persoana id="1">
+        <nume>Popescu</nume>
+        <prenume>Ion</prenume>
+        <varsta>23</varsta>
+        <adresa>
+            <strada>Saturn</strada>
+            <numar>2</numar>
+            <localitate>Galati</localitate>
+            <judet>Galati</judet>
+            <tara>Romana</tara>
+        </adresa>
+    </persoana>
+    <persoana id="2">
+        <nume>Popescu</nume>
+        <prenume>Andrei</prenume>
+        <varsta>20</varsta>
+        <adresa>
+            <strada>D-na Ghica</strada>
+            <numar>22</numar>
+            <localitate>Bucuresti</localitate>
+            <judet>Bucuresti</judet>
+            <tara>Romania</tara>
+        </adresa>
+    </persoana>
+    <persoana id="3">
+        <nume>Popa</nume>
+        <prenume>Ion</prenume>
+        <varsta>30</varsta>
+        <adresa>
+            <strada>Nerva Traian</strada>
+            <numar>A77</numar>
+            <localitate>Bucuresti</localitate>
+            <judet>Bucuresti</judet>
+            <tara>Romania</tara>
+        </adresa>
+    </persoana>
+</persoane>
