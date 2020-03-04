@@ -18,7 +18,59 @@
     <hr />
     <main>
         <article>
-
+            <h2>Inregistrare utilizator nou:</h2>
+            <form>
+                <fieldset>
+                    Nume utilizator: <input type="text" />
+                    <br />
+                    Parola: <input type="password" />
+                    <br />
+                    Nume: <input type="text" />
+                    <br />
+                    Prenume: <input type="text" />
+                    <br />
+                    Email: <input type="email"/>
+                    <br />
+                    Telefon: <input type="tel"/>
+                    <br />
+                    Sex:
+                    <select id="sex">
+                        <option value="masc">M</option>
+                        <option value="fem">F</option>
+                    </select>
+                    <br />
+                    Mancarea preferata:<input type="text"/>
+                    <datalist id="mancarea_preferata">
+                        <option value="Supa">
+                        <option value="Cartofi prajiti">
+                        <option value="Crispy">
+                        <option value="Clatite">
+                        <option value="Orez">
+                    </datalist>
+                    <br />
+                    Culoarea preferata:
+                    <select id="culori">
+                        <option value="rosu">rosu</option>
+                        <option value="verde">verde</option>
+                        <option value="negru">rosu</option>
+                    </select>
+                    <br />
+                    Data nasterii: <input type="date" />
+                    <br />
+                    Ora nasterii: <input type="time" />
+                    <br />
+                    Varsta: <input type="range" value="varsta" min="0" max="100"/>
+                    <br />
+                    Adresa paginii personale: <input type="url" />
+                    <br />
+                    Descriere: <textarea id="descriere"></textarea>
+                    <br />
+                    <input type="checkbox" />Sunt de acord cu conditiile
+                    <br />
+                    <br />
+                    <input type="submit" value="Inregistreaza">
+                </fieldset>
+            </form>
         </article>
     </main>
 
