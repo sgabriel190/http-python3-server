@@ -1,3 +1,25 @@
+header{
+    text-align: center;
+}
+
+body{
+    background-color: #ccc;
+}
+
+nav{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+footer {
+    position: sticky;
+    height: 50px;
+    background-color: rgba(255, 99, 71, 0.5);
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
+}
+
 nav a {
     border:4px solid DodgerBlue;
     background-color: rgba(255, 99, 71, 0.5);
@@ -25,19 +47,15 @@ nav a:hover {
     opacity: 1;
 }
 
-table, th, td {
-    border: 1px solid black;
+main article{
+    width: 100%;
+    height: auto;
+    background-color: #f1f1f1;
+    padding: 5px;
 }
 
-footer {
-    position: sty;
-    height: 50px;
-    background-color: rgba(255, 99, 71, 0.5);
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-    text-align: center;
+table, th, td {
+    border: 1px solid black;
 }
 
 input {
