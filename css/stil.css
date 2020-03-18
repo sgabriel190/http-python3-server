@@ -16,9 +16,40 @@ footer {
     position: sticky;
     height: 50px;
     background-color: rgba(255, 99, 71, 0.5);
-    padding: 5px;
+    margin: 2px;
+    padding: 2px;
     text-align: center;
     border-radius: 20px;
+}
+
+main aside {
+    margin: 10px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    width: 20%;
+    text-align: center;
+    border-radius: 5px;
+    float: left;
+}
+
+aside a {
+    font-family: "Courier New";
+    text-decoration: none;
+    font-size: 20px;
+    margin: 20px;
+    color: black;
+    border: 2px solid DodgerBlue;
+    background-color: cornsilk;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+main section {
+    width: 70%;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    float: left;
 }
 
 nav a {
