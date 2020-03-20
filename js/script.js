@@ -44,13 +44,24 @@ function decimalToHexString(number) {
     if (number < 0) {
         number = 0xFFFFFFFF + number + 1;
     }
-    return number.toString(16).toUpperCase();
+    if (number < 0x10) {
+        return "0" + number.toString(16).toUpperCase();
+    } else {
+        return number.toString(16).toUpperCase();
+    }
 }
 
 function lottoGame() {
-    var number_result = ""
+    var number_result = "";
+    var number_guessed = 0;
     for (i = 0; i < 8; i++) {
-        number_result += decimalToHexString(Math.floor(Math.random() * 256)) + "&emsp;";
+        var read_value = parseInt(document.getElementById("input" + i).value);
+        var generated_number = Math.floor(Math.random() * 256);
+        if (read_value == generated_number) {
+            number_guessed++;
+        }
+        number_result += decimalToHexString(generated_number) + "&emsp;";
     }
-    document.getElementById("game_result").innerHTML = number_result;
+    document.getElementById("game_result").innerHTML = "Aţi ghicit " + number_guessed + " numere.<br />" +
+        number_result;
 }
