@@ -1,3 +1,56 @@
+let isDrawing = false;
+let x = 0;
+let y = 0;
+
+function drawLine(context, x1, y1, x2, y2) {
+    context.beginPath();
+    context.strokeStyle = document.getElementById("color").value;
+    context.lineWidth = 1;
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+}
+
+function initCanvas() {
+    const canvas = document.getElementById('canvas1');
+    const context = canvas.getContext('2d');
+
+
+    // The x and y offset of the canvas from the edge of the page
+    var rect = canvas.getBoundingClientRect();
+
+    // Add the event listeners for mousedown, mousemove, and mouseup
+    canvas.addEventListener('mousedown', e => {
+        rect = canvas.getBoundingClientRect();
+        x = e.clientX - rect.left;
+        y = e.clientY - rect.top + 2;
+        isDrawing = true;
+    });
+
+    canvas.addEventListener('mousemove', e => {
+        if (isDrawing === true) {
+            var current_x = e.clientX - rect.left;
+            var current_y = e.clientY - rect.top + 2;
+            console.log(x + " " + y + " " + rect.left + " " + rect.top + " " + e.clientX + " " + e.clientY);
+            drawLine(context, x, y, current_x, current_y);
+            x = current_x;
+            y = current_y;
+
+        }
+    });
+
+    window.addEventListener('mouseup', e => {
+        if (isDrawing === true) {
+            var current_x = e.clientX - rect.left;
+            var current_y = e.clientY - rect.top + 2;
+            drawLine(context, x, y, current_x, current_y);
+            x = 0;
+            y = 0;
+            isDrawing = false;
+        }
+    });
+}
+
 function getCurrentTime() {
     var d = new Date();
     document.getElementById("time").innerHTML = "<br /><br /> Ora:" + d.toLocaleTimeString();
