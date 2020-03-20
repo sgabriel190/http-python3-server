@@ -27,6 +27,13 @@ function initCanvas() {
         isDrawing = true;
     });
 
+    canvas.addEventListener("dblclick", e => {
+        var current_x = e.clientX - rect.left;
+        var current_y = e.clientY - rect.top + 2;
+        context.fillStyle = document.getElementById("color").value;
+        context.fillRect(current_x, current_y, 200, 100);
+    })
+
     canvas.addEventListener('mousemove', e => {
         if (isDrawing === true) {
             var current_x = e.clientX - rect.left;
@@ -35,7 +42,6 @@ function initCanvas() {
             drawLine(context, x, y, current_x, current_y);
             x = current_x;
             y = current_y;
-
         }
     });
 

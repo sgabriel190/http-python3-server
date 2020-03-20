@@ -90,9 +90,11 @@ main section #color {
     padding: 7px;
 }
 
+#div_section3 {
+    text-align: center;
+}
+
 canvas {
-    height: 1000;
-    width: 1000;
     background-color: #ffffff;
     border: 1px solid black;
 }
