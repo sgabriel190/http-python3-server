@@ -48,6 +48,11 @@ aside a {
     background-color: cornsilk;
     border-radius: 10px;
     padding: 5px;
+    transition: 0.3s;
+}
+
+aside a:hover {
+    border-color: red;
 }
 
 main section {
