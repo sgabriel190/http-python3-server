@@ -58,6 +58,7 @@ main section {
     float: right;
     font-family: "Arial";
     font-size: medium;
+    border-radius: 10px;
 }
 
 main section h3 {

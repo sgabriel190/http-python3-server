@@ -1,7 +1,16 @@
+function getCurrentTime() {
+    var d = new Date();
+    document.getElementById("time").innerHTML = "<br /><br /> Ora:" + d.toLocaleTimeString();
+}
+
 function getCurrentInfo() {
     var current_date = new Date();
     var navigator_version = navigator.appVersion;
     var browser_name = navigator.appCodeName;
+
+    //Afisarea timpului ca text prima data, apoi pornirea unui interval de refresh de 1sec
+    getCurrentTime();
+    setInterval(getCurrentTime, 1000);
 
     var OSName = "Unknown OS";
     if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
@@ -11,10 +20,7 @@ function getCurrentInfo() {
 
     var date_time = "Data:" + current_date.getDate() + "-" +
         (current_date.getMonth() + 1) + "-" +
-        current_date.getFullYear() + "<br /><br /> Ora:" +
-        current_date.getHours() + ":" +
-        current_date.getMinutes() + ":" +
-        current_date.getSeconds();
+        current_date.getFullYear();
 
     var current_url = "<br /><br /> Link URL: " + window.location.href;
     document.getElementById("section1").innerHTML += date_time + current_url;
