@@ -39,3 +39,18 @@ function showPosition(position) {
     document.getElementById("section1").innerHTML += "<br /><br /><u>Location</u>" + "<br/><br /> Latitude: " + position.coords.latitude +
         "<br /><br /> Longitude: " + position.coords.longitude;
 }
+
+function decimalToHexString(number) {
+    if (number < 0) {
+        number = 0xFFFFFFFF + number + 1;
+    }
+    return number.toString(16).toUpperCase();
+}
+
+function lottoGame() {
+    var number_result = ""
+    for (i = 0; i < 8; i++) {
+        number_result += decimalToHexString(Math.floor(Math.random() * 256)) + "&emsp;";
+    }
+    document.getElementById("game_result").innerHTML = number_result;
+}
