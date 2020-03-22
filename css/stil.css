@@ -90,8 +90,18 @@ main section #color {
     padding: 7px;
 }
 
+main section #color_table {
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+}
+
 #div_section3 {
     text-align: center;
+}
+
+#div_section4 {
+    text-align: left;
 }
 
 canvas {

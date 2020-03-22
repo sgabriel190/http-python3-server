@@ -2,6 +2,31 @@ let isDrawing = false;
 let x = 0;
 let y = 0;
 
+function addRow() {
+    var table = document.getElementById("table_section4");
+
+    var row = table.insertRow(document.getElementById("rand").value);
+
+    row.style.backgroundColor = document.getElementById("color_table").value;
+
+    for (i = 0; i < table.rows[0].cells.length; i++) {
+        var cell = row.insertCell(i);
+        cell.innerHTML = "rand nou";
+    }
+
+}
+
+function addColumn() {
+    var table = document.getElementById("table_section4");
+    var table_rows = table.querySelectorAll("tr");
+
+    table_rows.forEach(element => {
+        var cell = element.insertCell(document.getElementById("coloana").value);
+        cell.innerHTML = "coloana noua";
+        cell.style.backgroundColor = document.getElementById("color_table").value;
+    })
+}
+
 function drawLine(context, x1, y1, x2, y2) {
     context.beginPath();
     context.strokeStyle = document.getElementById("color").value;
@@ -38,7 +63,6 @@ function initCanvas() {
         if (isDrawing === true) {
             var current_x = e.clientX - rect.left;
             var current_y = e.clientY - rect.top + 2;
-            console.log(x + " " + y + " " + rect.left + " " + rect.top + " " + e.clientX + " " + e.clientY);
             drawLine(context, x, y, current_x, current_y);
             x = current_x;
             y = current_y;

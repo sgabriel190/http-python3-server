@@ -61,7 +61,7 @@
         <section id="section3">
             <h3>Secţiunea 3</h3>
             <div id="div_section3">
-                Alege culoarea:
+                Alege culoarea pentru canvas:
                 <input type="color" id="color" name="favcolor" value="#ff0000"><br /><br />
                 <canvas id="canvas1" height="500" width="1000">Your browser does not support the HTML5 canvas tag.</canvas>
             </div>
@@ -69,6 +69,27 @@
 
         <section id="section4">
             <h3>Secţiunea 4</h3>
+            <div id="div_section4">
+                Alege culoarea pentru tabel:
+                <input type="color" id="color_table" name="favcolor_table" value="#ff0000" />
+                <br /><br /> Specificaţi poziţia din tabel la care se face inserarea: Coloană:
+                <input id="coloana" /> Rând:
+                <input id="rand" />
+                <br /> <br />
+                <button id="button_coloana" onclick="addColumn()">Adaugă coloană</button>
+                <button id="button_rand" onclick="addRow()">Adaugă rând</button>
+                <br /> <br />
+                <table id="table_section4">
+                    <tr>
+                        <th>Month</th>
+                        <th>Savings</th>
+                    </tr>
+                    <tr>
+                        <td>January</td>
+                        <td>$100</td>
+                    </tr>
+                </table>
+            </div>
         </section>
     </main>
 
