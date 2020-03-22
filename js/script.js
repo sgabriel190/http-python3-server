@@ -2,6 +2,46 @@ let isDrawing = false;
 let x = 0;
 let y = 0;
 
+function callback4x1Button() {
+    var elements = document.querySelectorAll(".section_layout");
+    var canvas = document.getElementById('canvas1');
+
+    canvas.width = "1000";
+    canvas.height = "500";
+
+    elements.forEach(element => {
+        element.style.width = "70%";
+        element.style.height = "20%";
+    });
+}
+
+function callback1x4Button() {
+    var elements = document.querySelectorAll(".section_layout");
+    var canvas = document.getElementById('canvas1');
+
+    canvas.width = "200";
+    canvas.height = "200";
+
+    elements.forEach(element => {
+        element.style.width = "15%";
+        element.style.height = "500px";
+    });
+}
+
+function callback2x2Button() {
+    var elements = document.querySelectorAll(".section_layout");
+
+    var canvas = document.getElementById('canvas1');
+
+    canvas.width = "300";
+    canvas.height = "200";
+
+    elements.forEach(element => {
+        element.style.width = "30%";
+        element.style.height = "500px";
+    });
+}
+
 function addRow() {
     var table = document.getElementById("table_section4");
 

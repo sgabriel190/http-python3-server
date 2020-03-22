@@ -55,16 +55,18 @@ aside a:hover {
     border-color: red;
 }
 
-main section {
+.section_layout {
     width: 70%;
-    margin: 10px;
-    margin-right: 25px;
+    height: 20%;
+    margin: 15px;
+    margin-bottom: 30px;
     padding: 20px;
     background-color: #f1f1f1;
     float: right;
     font-family: "Arial";
     font-size: medium;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 main section h3 {
@@ -84,13 +86,13 @@ main section div {
     margin-bottom: 10px;
 }
 
-main section #color {
+#color {
     width: 40px;
     height: 40px;
     padding: 7px;
 }
 
-main section #color_table {
+#color_table {
     width: 40px;
     height: 40px;
     padding: 7px;
