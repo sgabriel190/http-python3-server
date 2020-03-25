@@ -55,12 +55,14 @@ while True:
     os.chdir("continut/css")
     print(os.getcwd())
     f1 = open("stil.css", "r")
-    mesaj = f1.read()
+    raspuns = ""
+    mesaj1 = ""
+    mesaj1 = f1.read()
     raspuns = argument_list[2] + " 200  OK" + CRLF 
     raspuns += "Server: py_server" + CRLF
     raspuns += "Content-Type: text/css" + CRLF
-    raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
-    raspuns += mesaj + CRLF + CRLF
+    raspuns += "Content-Length: " + str(len(mesaj1.encode('utf-8'))) + CRLF
+    raspuns += mesaj1 + CRLF + CRLF
     clientsocket.sendall(raspuns.encode("utf-8"))
     f1.close()
 
