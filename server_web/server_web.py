@@ -1,4 +1,5 @@
 import socket
+import os
 
 # creeaza un server socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -36,16 +37,27 @@ while True:
     # TODO interpretarea sirului de caractere `linieDeStart` pentru a extrage numele resursei cerute
     argument_list = linieDeStart.split(" ")
     raspuns = ""
-    mesaj = "Hello world!"
     CRLF = "\r\n"
 
+    os.chdir("..")
+    f = open("index.html", "r")
+    mesaj = f.read()
     raspuns += argument_list[2] + " 200  OK" + CRLF 
     raspuns += "Server: py_server" + CRLF
-
     raspuns += "Content-Type: text/html" + CRLF
     raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
     raspuns += mesaj + CRLF + CRLF
-    # TODO trimiterea răspunsului HTTP
     clientsocket.sendall(raspuns.encode("utf-8"))
+
+    os.chdir("continut/css")
+    f = open("stil.css", "r")
+    mesaj = f.read()
+    raspuns = argument_list[2] + " 200  OK" + CRLF 
+    raspuns += "Server: py_server" + CRLF
+    raspuns += "Content-Type: text/css" + CRLF
+    raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
+    raspuns += mesaj + CRLF + CRLF
+    clientsocket.sendall(raspuns.encode("utf-8"))
+
     clientsocket.close()
     print("S-a terminat comunicarea cu clientul.")
