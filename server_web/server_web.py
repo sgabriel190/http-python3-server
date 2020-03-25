@@ -39,7 +39,9 @@ while True:
     raspuns = ""
     CRLF = "\r\n"
 
-    os.chdir("..")
+    while(os.getcwd() != "/home/gabriel/Documents/pw/proiect1-picolo190"):
+        os.chdir("..")
+    print(os.getcwd())
     f = open("index.html", "r")
     mesaj = f.read()
     raspuns += argument_list[2] + " 200  OK" + CRLF 
@@ -48,16 +50,19 @@ while True:
     raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
     raspuns += mesaj + CRLF + CRLF
     clientsocket.sendall(raspuns.encode("utf-8"))
+    f.close()
 
     os.chdir("continut/css")
-    f = open("stil.css", "r")
-    mesaj = f.read()
+    print(os.getcwd())
+    f1 = open("stil.css", "r")
+    mesaj = f1.read()
     raspuns = argument_list[2] + " 200  OK" + CRLF 
     raspuns += "Server: py_server" + CRLF
     raspuns += "Content-Type: text/css" + CRLF
     raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
     raspuns += mesaj + CRLF + CRLF
     clientsocket.sendall(raspuns.encode("utf-8"))
+    f1.close()
 
     clientsocket.close()
     print("S-a terminat comunicarea cu clientul.")
