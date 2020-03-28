@@ -1,6 +1,31 @@
 import socket
 import os
 
+CRLF = "\r\n"
+os.chdir("..")
+print(os.getcwd())
+
+def myReadFile(path):
+    f = open(path, "rb")
+    continut = f.read()
+    f.close()
+    return continut
+
+def formatHttpPacket(file, httpType, fileType):
+    response = ""
+    response += httpType + " 200  OK" + CRLF 
+    response += "Server: py_server" + CRLF
+    response += "Content-Type: " + fileType + CRLF
+    response += "Content-Length: " + str(len(file.encode('utf-8'))) + CRLF
+    response += file + CRLF + CRLF
+    return response
+
+def findAcceptField(packet):
+    packet_split = packet.split(CRLF)
+    accept_field = packet_split[3].find(',')
+    accept = packet_split[3][8:accept_field]
+    return accept
+
 # creeaza un server socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -26,7 +51,8 @@ while True:
         data = clientsocket.recv(1024)
         cerere =  data.decode("utf-8")
         print("S-a citit mesajul: \n---------------------------\n" + cerere + "\n---------------------------")
-        pozitie = cerere.find('\r\n')
+        pozitie = cerere.find(CRLF)
+        accept_field = findAcceptField(cerere)
         if (pozitie > -1):
             linieDeStart = cerere[0:pozitie]
             print("S-a citit linia de start din cerere: ##### " + linieDeStart + " #####")
@@ -34,37 +60,12 @@ while True:
         else:
             print("Cerere de la client invalida.")
     print("S-a terminat cititrea.")
-    # TODO interpretarea sirului de caractere `linieDeStart` pentru a extrage numele resursei cerute
     argument_list = linieDeStart.split(" ")
-    raspuns = ""
-    CRLF = "\r\n"
-
-    while(os.getcwd() != "/home/gabriel/Documents/pw/proiect1-picolo190"):
-        os.chdir("..")
-    print(os.getcwd())
-    f = open("index.html", "r")
-    mesaj = f.read()
-    raspuns += argument_list[2] + " 200  OK" + CRLF 
-    raspuns += "Server: py_server" + CRLF
-    raspuns += "Content-Type: text/html" + CRLF
-    raspuns += "Content-Length: " + str(len(mesaj.encode('utf-8'))) + CRLF
-    raspuns += mesaj + CRLF + CRLF
-    clientsocket.sendall(raspuns.encode("utf-8"))
-    f.close()
-
-    os.chdir("continut/css")
-    print(os.getcwd())
-    f1 = open("stil.css", "r")
-    raspuns = ""
-    mesaj1 = ""
-    mesaj1 = f1.read()
-    raspuns = argument_list[2] + " 200  OK" + CRLF 
-    raspuns += "Server: py_server" + CRLF
-    raspuns += "Content-Type: text/css" + CRLF
-    raspuns += "Content-Length: " + str(len(mesaj1.encode('utf-8'))) + CRLF
-    raspuns += mesaj1 + CRLF + CRLF
-    clientsocket.sendall(raspuns.encode("utf-8"))
-    f1.close()
+    
+    response_file = myReadFile(argument_list[1][1:])
+    packet = formatHttpPacket(response_file, argument_list[2], accept_field)
+    
+    clientsocket.sendall(packet.encode("utf-8"))
 
     clientsocket.close()
     print("S-a terminat comunicarea cu clientul.")
