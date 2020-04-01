@@ -2,6 +2,10 @@ let isDrawing = false;
 let x = 0;
 let y = 0;
 
+function schimbaContinut(resursa) {
+
+}
+
 function callback4x1Button() {
     var elements = document.querySelectorAll(".section_layout");
     var canvas = document.getElementById('canvas1');
