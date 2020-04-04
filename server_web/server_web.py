@@ -19,17 +19,14 @@ tipuriMedia = {
 	"json": "application/json"
 }
 
-def formatHttpResponse(tipMedia, fileName, clientsocket):
+def formatHttpResponse(tipMedia, fileStream, clientsocket):
 	# se trimite raspunsul
-	file = fileName.read()
 	packet = "HTTP/1.1 200 OK" + CRLF
-	packet += "Content-Length: " + str(len(file)) + CRLF
+	packet += "Content-Length: " + str(len(fileStream)) + CRLF
 	packet += "Content-Type: " + tipMedia + CRLF
 	packet += "Server: My PW Server" + CRLF + CRLF
-	print("da")
 	clientsocket.sendall(packet.encode('utf-8'))
-	clientsocket.sendall(file)
-
+	clientsocket.sendall(fileStream)
 
 
 def errorHttpResponse(clientsocket):
@@ -61,6 +58,7 @@ while True:
 	# se proceseaza cererea si se citeste prima linie de text
 	cerere = ""
 	linieDeStart = ""
+	
 	while True:
 		buf = clientsocket.recv(1024)
 		if len(buf) < 1:
@@ -80,20 +78,21 @@ while True:
 
 	# interpretarea sirului de caractere `linieDeStart`
 	elementeLineDeStart = linieDeStart.split(" ")
-
-	# TODO securizare
 	numeResursaCeruta = elementeLineDeStart[1][1:]
 
 	fisier = None
+
 	try:
 		# deschide fisierul pentru citire in mod binar
 		fisier = open(numeResursaCeruta,"rb")
+		fileStream = fisier.read()
 
-		# tip media
+		# extragerea tipului media din dictionar
 		numeExtensie = numeResursaCeruta[numeResursaCeruta.rfind(".")+1:]
 		tipMedia = tipuriMedia[numeExtensie]
-		formatHttpResponse(tipMedia, fisier, clientsocket)
-		print("nu")
+
+		# Formarea si trimiterea raspunsului HTTP
+		formatHttpResponse(tipMedia, fileStream, clientsocket)
 
 	except IOError:
 		# daca fisierul nu exista trebuie trimis un mesaj de 404 Not Found
@@ -104,5 +103,5 @@ while True:
 			fisier.close()
 	
 	clientsocket.close()
-	print('S-a terminat comunicarea cu clientul.')
+	print("S-a terminat comunicarea cu clientul.")
 
