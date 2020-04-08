@@ -4,12 +4,14 @@ let y = 0;
 
 function schimbaContinut(resursa) {
     var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', resursa + '.html');
+
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("continut").innerHTML = this.responseText;
         }
     }
-    xhttp.open("GET", resursa + ".html", true);
+
     xhttp.send();
 }
 
