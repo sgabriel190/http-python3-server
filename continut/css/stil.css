@@ -223,12 +223,12 @@ input[type=submit]:hover {
     margin-right: auto;
 }
 
-#table_persoane td,
+#table_persoane>td,
 th {
     padding: 10px;
 }
 
-#table_persoane th {
+#table_persoane>th {
     background-color: #4CAF50;
     color: white;
 }
