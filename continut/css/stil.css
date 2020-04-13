@@ -219,9 +219,16 @@ input[type=submit]:hover {
     border-collapse: collapse;
     text-align: center;
     padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #table_persoane td,
 th {
     padding: 10px;
+}
+
+#table_persoane th {
+    background-color: #4CAF50;
+    color: white;
 }
