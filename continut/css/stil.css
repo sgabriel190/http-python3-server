@@ -4,6 +4,7 @@ header {
 
 body {
     background-color: #ccc;
+    overflow-x: hidden;
 }
 
 nav {
@@ -17,11 +18,10 @@ nav {
 footer {
     position: sticky;
     width: 100%;
-    bottom: 0;
     float: left;
     height: 3em;
     background-color: rgba(255, 99, 71, 0.5);
-    margin-top: 5px;
+    margin-top: 15px;
     padding: 2px;
     text-align: center;
     border-radius: 20px;

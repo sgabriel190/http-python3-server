@@ -1,17 +1,31 @@
-let isDrawing = false;
-let x = 0;
-let y = 0;
+var isDrawing = false;
+var x = 0;
+var y = 0;
 
-function schimbaContinut(resursa) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', resursa + '.html');
-
+function schimbaContinut(resursa, jsFisier, jsFunctie) {
+    const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
             document.getElementById("continut").innerHTML = this.responseText;
+            if (jsFisier) {
+                var elementScript = document.createElement('script');
+                elementScript.onload = function() {
+                    console.log("hello");
+                    if (jsFunctie) {
+                        window[jsFunctie]();
+                    }
+                };
+                elementScript.src = jsFisier;
+                document.head.appendChild(elementScript);
+            } else {
+                if (jsFunctie) {
+                    window[jsFunctie]();
+                }
+            }
         }
-    }
 
+    }
+    xhttp.open('GET', resursa + '.html');
     xhttp.send();
 }
 
@@ -200,4 +214,9 @@ function lottoGame() {
     }
     document.getElementById("game_result").innerHTML = "Aţi ghicit " + number_guessed + " numere.<br />" +
         number_result;
+}
+
+function changeToInvatJS() {
+    initCanvas();
+    getCurrentInfo();
 }

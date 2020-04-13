@@ -1,107 +1,69 @@
-<!DOCTYPE html>
-<html lang="ro-RO">
+<aside>
+    <a href="#section1">Secţiunea 1</a>
+    <br /><br /><br />
+    <a href="#section2">Secţiunea 2</a>
+    <br /><br /><br />
+    <a href="#section3">Secţiunea 3</a>
+    <br /><br /><br />
+    <a href="#section4">Secţiunea 4</a>
+    <br /><br /><br />
+    <button id="4x1_button" onclick="callback4x1Button()">4x1</button>
+    <button id="1x4_button" onclick="callback1x4Button()">1x4</button>
+    <button id="2x2_button" onclick="callback2x2Button()">2x2</button>
+</aside>
 
-<head>
-    <link rel="stylesheet" href="continut/css/stil.css" type="text/css">
-    <script src="continut/js/script.js"></script>
-    <meta charset="utf-8" />
-    <title>
-        Programare web
-    </title>
-</head>
+<section id="section1" class="section_layout">
+    <h3>Secţiunea 1</h3>
+    <p id="time"></p>
+</section>
 
-<body>
-    <header>
-        <h1><img src="continut/images/img.jpeg" alt="logo" width="50" height="50" />Programare web</h1>
-    </header>
+<section id="section2" class="section_layout">
+    <h3>Secţiunea 2</h3>
+    <div>
+        <button onclick="lottoGame()">Extrage</button> <br />Nr1:
+        <input pattern="[A-Z0-9]{2}" id="input0" /> &emsp; Nr2:
+        <input pattern="[A-Z0-9]{2}" id="input1" />&emsp; Nr3
+        <input pattern="[A-Z0-9]{2}" id="input2" />&emsp; Nr4:
+        <input pattern="[A-Z0-9]{2}" id="input3" />&emsp; Nr5:
+        <input pattern="[A-Z0-9]{2}" id="input4" />&emsp; Nr6:
+        <input pattern="[A-Z0-9]{2}" id="input5" />&emsp; Nr7:
+        <input pattern="[A-Z0-9]{2}" id="input6" />&emsp; Nr8:
+        <input pattern="[A-Z0-9]{2}" id="input7" />
+    </div>
+    <br />
+    <p id="game_result"></p>
+</section>
 
-    <nav>
-        <a href="./index.html">Acasă</a>&nbsp;&nbsp;&nbsp;
-        <a href="./inregistreaza.html">Înregistrează</a>&nbsp;&nbsp;&nbsp;
-        <a href="./video.html">Video</a>&nbsp;&nbsp;&nbsp;
-        <a href="./despre_html.html">Despre</a>&nbsp;&nbsp;&nbsp;
-        <a href="./desen.html">Desen</a>&nbsp;&nbsp;&nbsp;
-        <a href="./invat_js.html">Învăţ JS</a>&nbsp;&nbsp;&nbsp;
-    </nav>
-    <main>
-        <aside>
-            <a href="#section1">Secţiunea 1</a>
-            <br /><br /><br />
-            <a href="#section2">Secţiunea 2</a>
-            <br /><br /><br />
-            <a href="#section3">Secţiunea 3</a>
-            <br /><br /><br />
-            <a href="#section4">Secţiunea 4</a>
-            <br /><br /><br />
-            <button id="4x1_button" onclick="callback4x1Button()">4x1</button>
-            <button id="1x4_button" onclick="callback1x4Button()">1x4</button>
-            <button id="2x2_button" onclick="callback2x2Button()">2x2</button>
-        </aside>
+<section id="section3" class="section_layout">
+    <h3>Secţiunea 3</h3>
+    <div id="div_section3">
+        Alege culoarea pentru canvas:
+        <input type="color" id="color" name="favcolor" value="#ff0000"><br /><br />
+        <canvas id="canvas1" height="500" width="1000">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+</section>
 
-        <section id="section1" class="section_layout">
-            <h3>Secţiunea 1</h3>
-            <p id="time"></p>
-        </section>
-
-        <section id="section2" class="section_layout">
-            <h3>Secţiunea 2</h3>
-            <div>
-                <button onclick="lottoGame()">Extrage</button> <br />Nr1:
-                <input pattern="[A-Z0-9]{2}" id="input0" /> &emsp; Nr2:
-                <input pattern="[A-Z0-9]{2}" id="input1" />&emsp; Nr3
-                <input pattern="[A-Z0-9]{2}" id="input2" />&emsp; Nr4:
-                <input pattern="[A-Z0-9]{2}" id="input3" />&emsp; Nr5:
-                <input pattern="[A-Z0-9]{2}" id="input4" />&emsp; Nr6:
-                <input pattern="[A-Z0-9]{2}" id="input5" />&emsp; Nr7:
-                <input pattern="[A-Z0-9]{2}" id="input6" />&emsp; Nr8:
-                <input pattern="[A-Z0-9]{2}" id="input7" />
-            </div>
-            <br />
-            <p id="game_result"></p>
-        </section>
-
-        <section id="section3" class="section_layout">
-            <h3>Secţiunea 3</h3>
-            <div id="div_section3">
-                Alege culoarea pentru canvas:
-                <input type="color" id="color" name="favcolor" value="#ff0000"><br /><br />
-                <canvas id="canvas1" height="500" width="1000">Your browser does not support the HTML5 canvas tag.</canvas>
-            </div>
-        </section>
-
-        <section id="section4" class="section_layout">
-            <h3>Secţiunea 4</h3>
-            <div id="div_section4">
-                Alege culoarea pentru tabel:
-                <input type="color" id="color_table" name="favcolor_table" value="#ff0000" />
-                <br /><br /> Specificaţi poziţia din tabel la care se face inserarea: Coloană:
-                <input id="coloana" /> Rând:
-                <input id="rand" />
-                <br /> <br />
-                <button id="button_coloana" onclick="addColumn()">Adaugă coloană</button>
-                <button id="button_rand" onclick="addRow()">Adaugă rând</button>
-                <br /> <br />
-                <table id="table_section4">
-                    <tr>
-                        <th>Month</th>
-                        <th>Savings</th>
-                    </tr>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-        <script>
-            initCanvas();
-            getCurrentInfo();
-        </script>
-
-        <footer>
-            <p>&copy;. 2020. Programare web</p>
-        </footer>
-    </main>
-</body>
-
-</html>
+<section id="section4" class="section_layout">
+    <h3>Secţiunea 4</h3>
+    <div id="div_section4">
+        Alege culoarea pentru tabel:
+        <input type="color" id="color_table" name="favcolor_table" value="#ff0000" />
+        <br /><br /> Specificaţi poziţia din tabel la care se face inserarea: Coloană:
+        <input id="coloana" /> Rând:
+        <input id="rand" />
+        <br /> <br />
+        <button id="button_coloana" onclick="addColumn()">Adaugă coloană</button>
+        <button id="button_rand" onclick="addRow()">Adaugă rând</button>
+        <br /> <br />
+        <table id="table_section4">
+            <tr>
+                <th>Month</th>
+                <th>Savings</th>
+            </tr>
+            <tr>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+        </table>
+    </div>
+</section>
