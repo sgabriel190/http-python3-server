@@ -1,7 +1,13 @@
+//Variabile folosite pentru canvas
 var isDrawing = false;
 var x = 0;
 var y = 0;
 
+//Laborator 7
+/*
+ ***Functie schimbaContinut utilizata pentru a naviga in site sub forma de single page application(SPA).
+ ***Functia folosesste AJAX pentru a forma un request HTTP pentru a schimba continutul paginii web, cu cel specific paginii selectate din meniu.
+ */
 function schimbaContinut(resursa, jsFisier, jsFunctie) {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -29,6 +35,20 @@ function schimbaContinut(resursa, jsFisier, jsFunctie) {
     xhttp.send();
 }
 
+//Laborator 5
+/*
+ ***Aceasta parte a a fisierului js se ocupa de scripturile din pagina Invat Js unde se initializeaza un canvas, se adauga
+ ***continut nou in pagina(Sectiunea 1) si se implementeaza un mini joc.
+ */
+
+
+//Functie helper pentru apelarea functionalitatilor din pagina Invat JS
+function changeToInvatJS() {
+    initCanvas();
+    getCurrentInfo();
+}
+
+//Functie ce redimensioneaza obiectele din pagina pentru a afisa cele 4 sectiuni intr-o linie
 function callback4x1Button() {
     var elements = document.querySelectorAll(".section_layout");
     var canvas = document.getElementById('canvas1');
@@ -42,6 +62,7 @@ function callback4x1Button() {
     });
 }
 
+//Functie ce redimensioneaza obiectele din pagina pentru a afisa cele 4 sectiuni intr-o coloana
 function callback1x4Button() {
     var elements = document.querySelectorAll(".section_layout");
     var canvas = document.getElementById('canvas1');
@@ -55,6 +76,7 @@ function callback1x4Button() {
     });
 }
 
+//Functie ce redimensioneaza obiectele din pagina(sectiunile), pentru a fi afisare cate 2 pe linie
 function callback2x2Button() {
     var elements = document.querySelectorAll(".section_layout");
 
@@ -69,6 +91,7 @@ function callback2x2Button() {
     });
 }
 
+//Functie ce adauga o linie noua la tabel
 function addRow() {
     var table = document.getElementById("table_section4");
 
@@ -83,6 +106,7 @@ function addRow() {
 
 }
 
+//Functie ce adauga o coloana noua tabelului
 function addColumn() {
     var table = document.getElementById("table_section4");
     var table_rows = table.querySelectorAll("tr");
@@ -94,15 +118,7 @@ function addColumn() {
     })
 }
 
-function drawLine(context, x1, y1, x2, y2) {
-    context.beginPath();
-    context.strokeStyle = document.getElementById("color").value;
-    context.lineWidth = 1;
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.stroke();
-}
-
+//Functie helper pentru a initializa canvasul din sectiunea 3
 function initCanvas() {
     const canvas = document.getElementById('canvas1');
     const context = canvas.getContext('2d');
@@ -148,11 +164,17 @@ function initCanvas() {
     });
 }
 
-function getCurrentTime() {
-    var d = new Date();
-    document.getElementById("time").innerHTML = "<br /><br /> Ora:" + d.toLocaleTimeString();
+//Functie utilizata la eventimentul de mouse (mousemove), pentru a desena linii cu mouse-ul in canvas
+function drawLine(context, x1, y1, x2, y2) {
+    context.beginPath();
+    context.strokeStyle = document.getElementById("color").value;
+    context.lineWidth = 1;
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
 }
 
+//Functie ce adauga in totalitate continutul sectiunii 1, afisand date despre utilizator, cat si local timezone
 function getCurrentInfo() {
     var current_date = new Date();
     var navigator_version = navigator.appVersion;
@@ -185,11 +207,20 @@ function getCurrentInfo() {
         "<br /><br /> Sistem de operare:" + OSName;
 }
 
+
+//Functie helper ce adauga in pagina la atributul time ora curenta
+function getCurrentTime() {
+    var d = new Date();
+    document.getElementById("time").innerHTML = "<br /><br /> Ora:" + d.toLocaleTimeString();
+}
+
+//Functie helper pentru a afisa geo pozitia utilizatorului
 function showPosition(position) {
     document.getElementById("section1").innerHTML += "<br /><br /><u>Location</u>" + "<br/><br /> Latitude: " + position.coords.latitude +
         "<br /><br /> Longitude: " + position.coords.longitude;
 }
 
+//Functie folosita pentru a transforma un numar zecimal intrunul hexazecimal in format string
 function decimalToHexString(number) {
     if (number < 0) {
         number = 0xFFFFFFFF + number + 1;
@@ -201,6 +232,7 @@ function decimalToHexString(number) {
     }
 }
 
+//Functie de callback pentru butonul corespunator jocului lotto
 function lottoGame() {
     var number_result = "";
     var number_guessed = 0;
@@ -214,9 +246,4 @@ function lottoGame() {
     }
     document.getElementById("game_result").innerHTML = "Aţi ghicit " + number_guessed + " numere.<br />" +
         number_result;
-}
-
-function changeToInvatJS() {
-    initCanvas();
-    getCurrentInfo();
 }
