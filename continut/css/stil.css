@@ -128,6 +128,12 @@ nav a {
     transition: 0.3s;
 }
 
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
 nav a:visited {
     color: black;
 }
