@@ -147,12 +147,6 @@ main article {
     margin: 10px;
 }
 
-table,
-th,
-td {
-    border: 1px solid black;
-}
-
 input {
     width: 20%;
     padding: 10px 10px;
@@ -194,7 +188,7 @@ input[type=submit]:hover {
         color: #000;
         background-color: #fff;
     }
-    nav a {
+    nav>a {
         padding-top: 5px;
         padding-right: 5px;
         padding-bottom: 5px;
