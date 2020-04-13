@@ -214,3 +214,14 @@ input[type=submit]:hover {
     margin-left: 25px;
     margin-right: 25px;
 }
+
+#table_persoane {
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+
+#table_persoane td,
+th {
+    padding: 10px;
+}

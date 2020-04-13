@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE persoane SYSTEM "persoane.dtd">
 <persoane>
-    <persoana id="1">
+    <persoana>
         <nume>Popescu</nume>
         <prenume>Ion</prenume>
         <varsta>23</varsta>
@@ -13,7 +13,7 @@
             <tara>Romana</tara>
         </adresa>
     </persoana>
-    <persoana id="2">
+    <persoana>
         <nume>Popescu</nume>
         <prenume>Andrei</prenume>
         <varsta>20</varsta>
@@ -25,7 +25,7 @@
             <tara>Romania</tara>
         </adresa>
     </persoana>
-    <persoana id="3">
+    <persoana>
         <nume>Popa</nume>
         <prenume>Ion</prenume>
         <varsta>30</varsta>

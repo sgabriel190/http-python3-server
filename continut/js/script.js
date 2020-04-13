@@ -16,7 +16,6 @@ function schimbaContinut(resursa, jsFisier, jsFunctie) {
             if (jsFisier) {
                 var elementScript = document.createElement('script');
                 elementScript.onload = function() {
-                    console.log("hello");
                     if (jsFunctie) {
                         window[jsFunctie]();
                     }
