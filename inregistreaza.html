@@ -1,6 +1,6 @@
 <article>
     <h2>Înregistrare utilizator nou:</h2>
-    <form>
+    <form action="/api/utilizatori" method="POST">
         <fieldset>
             Nume utilizator: <input type="text" />
             <br /> Parolă: <input type="password" />
@@ -36,7 +36,7 @@
             <input type="checkbox" />Sunt de acord cu condiţiile
             <br />
             <br />
-            <input type="submit" value="Inregistreaza">
+            <button>Înregistrează</button>
         </fieldset>
     </form>
 </article>

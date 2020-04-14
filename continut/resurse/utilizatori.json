@@ -1,1 +1,4 @@
-[{ "utilizator": "test", "parola": "test" }]
+{
+    "utilizator": "test",
+    "parola": "test"
+}

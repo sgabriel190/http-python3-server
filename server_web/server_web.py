@@ -81,27 +81,28 @@ while True:
 	numeResursaCeruta = elementeLineDeStart[1][1:]
 
 	fisier = None
+	if(numeResursaCeruta != "api/utilizatori"):
+		try:
+			# deschide fisierul pentru citire in mod binar
+			fisier = open(numeResursaCeruta,"rb")
+			fileStream = fisier.read()
 
-	try:
-		# deschide fisierul pentru citire in mod binar
-		fisier = open(numeResursaCeruta,"rb")
-		fileStream = fisier.read()
+			# extragerea tipului media din dictionar
+			numeExtensie = numeResursaCeruta[numeResursaCeruta.rfind(".")+1:]
+			tipMedia = tipuriMedia[numeExtensie]
 
-		# extragerea tipului media din dictionar
-		numeExtensie = numeResursaCeruta[numeResursaCeruta.rfind(".")+1:]
-		tipMedia = tipuriMedia[numeExtensie]
+			# Formarea si trimiterea raspunsului HTTP
+			formatHttpResponse(tipMedia, fileStream, clientsocket)
 
-		# Formarea si trimiterea raspunsului HTTP
-		formatHttpResponse(tipMedia, fileStream, clientsocket)
+		except IOError:
+			# daca fisierul nu exista trebuie trimis un mesaj de 404 Not Found
+			errorHttpResponse(clientsocket)
 
-	except IOError:
-		# daca fisierul nu exista trebuie trimis un mesaj de 404 Not Found
-		errorHttpResponse(clientsocket)
-
-	finally:
-		if fisier is not None:
-			fisier.close()
-	
+		finally:
+			if fisier is not None:
+				fisier.close()
+	else:
+		pass
 	clientsocket.close()
 	print("S-a terminat comunicarea cu clientul.")
 

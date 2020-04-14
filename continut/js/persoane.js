@@ -1,14 +1,12 @@
 function incarcaPersoane() {
     var xmlhttp = new XMLHttpRequest();
-
+    xmlhttp.open("GET", "continut/resurse/persoane.xml", true);
     xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             document.getElementById("loading_message").innerHTML = "Se încarcă. Vă rugăm aşteptaţi...";
             parseXML(this);
         }
     };
-
-    xmlhttp.open("GET", "continut/resurse/persoane.xml", true);
     xmlhttp.send();
 }
 

@@ -4,12 +4,47 @@ var x = 0;
 var y = 0;
 
 //Laborator 7
+
+function getLogin() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "continut/resurse/utilizatori.json", true);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            checkLogin(this);
+        }
+    };
+    xmlhttp.send(null);
+}
+
+//Functie de verificare a casutelor de login, apelata pe buton
+function checkLogin(jsonFile) {
+    // Extragem valorile aflate in textboxuri
+    var user_box = document.getElementById("utilizator").value;
+    var password_box = document.getElementById("parola").value;
+    document.getElementById("login_info").style.color = "red";
+
+    //Parsarea textului intr-un obiect JSON
+    var JSON_object = JSON.parse(jsonFile.responseText);
+
+    //Verificam daca utilizatorul si parola corespund
+    if (JSON_object.utilizator != user_box) {
+        document.getElementById("login_info").innerHTML = "Numele de utilizator nu corespunde!";
+        return;
+    }
+    if (JSON_object.parola != password_box) {
+        document.getElementById("login_info").innerHTML = "Parola nu corespunde!";
+        return;
+    }
+    document.getElementById("login_info").style.color = "green";
+    document.getElementById("login_info").innerHTML = "Log in cu succes!";
+}
 /*
  ***Functie schimbaContinut utilizata pentru a naviga in site sub forma de single page application(SPA).
  ***Functia folosesste AJAX pentru a forma un request HTTP pentru a schimba continutul paginii web, cu cel specific paginii selectate din meniu.
  */
 function schimbaContinut(resursa, jsFisier, jsFunctie) {
     const xhttp = new XMLHttpRequest();
+    xhttp.open('GET', resursa + '.html', true);
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             document.getElementById("continut").innerHTML = this.responseText;
@@ -30,7 +65,6 @@ function schimbaContinut(resursa, jsFisier, jsFunctie) {
         }
 
     }
-    xhttp.open('GET', resursa + '.html');
     xhttp.send();
 }
 
