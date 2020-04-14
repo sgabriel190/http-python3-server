@@ -3,8 +3,10 @@ var isDrawing = false;
 var x = 0;
 var y = 0;
 
-//Laborator 7
+//Laborator 8
 
+
+//Laborator 7
 function getLogin() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "continut/resurse/utilizatori.json", true);

@@ -142,6 +142,7 @@ nav a:hover {
     color: white;
     border-color: red;
     opacity: 1;
+    cursor: pointer;
 }
 
 main article {
@@ -238,6 +239,7 @@ th {
 }
 
 #login_button {
+    margin: 2%;
     font-size: 20px;
     border-radius: 8px;
     background-color: #7070db;
