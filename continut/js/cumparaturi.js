@@ -1,5 +1,5 @@
 var worker;
-var last_lenght = 0;
+var last_length = 0;
 class Produs {
     constructor(id, numeProdus, cantitate) {
         this.id = id;
@@ -14,14 +14,14 @@ function startWorker() {
         worker.onmessage = function(e) {
             document.getElementById("tabel_alimente").innerHTML = e.data;
         }
-        setInterval(checkLenght, 1000);
+        setInterval(checkLength, 1000);
     }
 }
 
-function checkLenght() {
+function checkLength() {
     let produse = localStorage.getItem("produse");
-    if (produse.length != last_lenght) {
-        last_lenght = produse.length;
+    if (produse.length != last_length) {
+        last_length = produse.length;
         worker.postMessage(localStorage.getItem("produse"));
     }
 }
