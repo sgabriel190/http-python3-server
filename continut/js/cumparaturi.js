@@ -19,12 +19,10 @@ function startWorker() {
 }
 
 function checkLenght() {
-    if (localStorage.getItem("produse") != null) {
-        let produse = localStorage.getItem("produse");
-        if (produse.length != last_lenght) {
-            last_lenght = produse.length;
-            worker.postMessage(localStorage.getItem("produse"));
-        }
+    let produse = localStorage.getItem("produse");
+    if (produse.length != last_lenght) {
+        last_lenght = produse.length;
+        worker.postMessage(localStorage.getItem("produse"));
     }
 }
 

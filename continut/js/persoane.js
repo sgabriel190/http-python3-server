@@ -13,7 +13,6 @@ function incarcaPersoane() {
 function parseXML(xmldoc) {
     var xml_file = xmldoc.responseXML;
     var table = "<tr><th>Nume</th><th>Prenume</th><th>Vârstă</th><th colspan=\"5\">Adresă</th></tr>";
-
     var xml_array = xml_file.getElementsByTagName("persoana");
     var adresa = xml_file.getElementsByTagName("adresa");
     for (var i = 0; i < xml_array.length; i++) {

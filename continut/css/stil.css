@@ -258,3 +258,12 @@ th {
 #login_info {
     font-weight: bold;
 }
+
+#div_cumparaturi {
+    text-align: center;
+}
+
+#tabel_alimente {
+    margin-left: auto;
+    margin-right: auto;
+}
